@@ -1,0 +1,258 @@
+Private Sub clearbutton_Click()
+
+Call UserForm_Initialize
+
+End Sub
+
+Private Sub nextbutton_Click()
+
+Dim emptyrow As Long
+
+
+'make data active
+ Sheet3.Activate
+
+'determine emptyRow
+emptyrow = WorksheetFunction.CountA(Range("A:A")) + 1
+
+'transfer information
+'if textbox is empty then xfr relevant info
+
+Cells(emptyrow, 10).Value = day.Value
+
+
+'balancetxtb
+If balancetxtb.Value = "" Then
+Cells(emptyrow, 1).Value = False
+Else
+Cells(emptyrow, 1).Value = balancetxtb.Value
+End If
+
+'buckettxtb
+If buckettxtb.Value = "" Then
+Cells(emptyrow, 2).Value = ""
+Else
+Cells(emptyrow, 2).Value = buckettxtb.Value
+End If
+
+'minutestxtb
+If minutestxtb.Value = "" Then
+Cells(emptyrow, 8).Value = False
+Else
+Cells(emptyrow, 8).Value = minutestxtb.Value
+End If
+
+'secondstxtb
+If secondstxtb.Value = "" Then
+Cells(emptyrow, 9).Value = False
+Else
+Cells(emptyrow, 9).Value = secondstxtb.Value
+End If
+
+'bif option column
+
+If bifop.Value = True Then
+Cells(emptyrow, 3).Value = True
+Else
+Cells(emptyrow, 3).Value = False
+End If
+
+'tdu option column
+
+If tduop.Value = True Then
+Cells(emptyrow, 4).Value = True
+Else
+Cells(emptyrow, 4).Value = False
+End If
+
+'pdu option column
+
+If pduop.Value = True Then
+Cells(emptyrow, 5).Value = True
+Else
+Cells(emptyrow, 5).Value = False
+End If
+
+'rbop option column
+
+If rbop.Value = True Then
+Cells(emptyrow, 6).Value = True
+Else
+Cells(emptyrow, 6).Value = False
+End If
+
+'stab option column
+If stabop.Value = True Then
+Cells(emptyrow, 7).Value = True
+Else
+Cells(emptyrow, 7).Value = False
+End If
+
+'reccurring option box column
+If recchk.Value = True Then
+Cells(emptyrow, 11).Value = True
+Else
+Cells(emptyrow, 11).Value = False
+End If
+
+
+Call UserForm_Initialize
+
+
+
+
+
+
+End Sub
+
+Private Sub okbutton_Click()
+
+Dim emptyrow As Long
+
+
+'make data active
+ Sheet3.Activate
+
+'determine emptyRow
+emptyrow = WorksheetFunction.CountA(Range("A:A")) + 1
+
+'transfer information
+'if textbox is empty then xfr relevant info
+
+Cells(emptyrow, 10).Value = day.Value
+
+'balancetxtb
+If balancetxtb.Value = "" Then
+Cells(emptyrow, 1).Value = False
+Else
+Cells(emptyrow, 1).Value = balancetxtb.Value
+End If
+
+'buckettxtb
+If buckettxtb.Value = "" Then
+Cells(emptyrow, 2).Value = ""
+Else
+Cells(emptyrow, 2).Value = buckettxtb.Value
+End If
+
+'minutestxtb
+If minutestxtb.Value = "" Then
+Cells(emptyrow, 8).Value = False
+Else
+Cells(emptyrow, 8).Value = minutestxtb.Value
+End If
+
+'secondstxtb
+If secondstxtb.Value = "" Then
+Cells(emptyrow, 9).Value = False
+Else
+Cells(emptyrow, 9).Value = secondstxtb.Value
+End If
+
+'bif option column
+
+If bifop.Value = True Then
+Cells(emptyrow, 3).Value = True
+Else
+Cells(emptyrow, 3).Value = False
+End If
+
+'tdu option column
+
+If tduop.Value = True Then
+Cells(emptyrow, 4).Value = True
+Else
+Cells(emptyrow, 4).Value = False
+End If
+
+'pdu option column
+
+If pduop.Value = True Then
+Cells(emptyrow, 5).Value = True
+Else
+Cells(emptyrow, 5).Value = False
+End If
+
+'rbop option column
+
+If rbop.Value = True Then
+Cells(emptyrow, 6).Value = True
+Else
+Cells(emptyrow, 6).Value = False
+End If
+
+'stab option column
+If stabop.Value = True Then
+Cells(emptyrow, 7).Value = True
+Else
+Cells(emptyrow, 7).Value = False
+End If
+
+'reccurring option box column
+If recchk.Value = True Then
+Cells(emptyrow, 11).Value = True
+Else
+Cells(emptyrow, 11).Value = False
+End If
+
+
+Call UserForm_Initialize
+
+
+
+Unload Me
+
+
+End Sub
+
+
+
+Private Sub UserForm_Initialize()
+
+'empty minutestxtb
+minutestxtb.Value = ""
+
+'empty secondstxtb
+secondstxtb.Value = ""
+
+'empty buckettxtb
+buckettxtb.Value = ""
+
+'empty balancetxtb
+balancetxtb.Value = ""
+
+
+'set no option as default
+
+bifop.Value = False
+
+tduop.Value = False
+
+pduop.Value = False
+
+rbop.Value = False
+
+stabop.Value = False
+
+recchk.Value = False
+
+Sheets("Main Page").Activate
+
+day.Value = Format(Date, "MM/dd/yyyy")
+
+
+Worksheets("Sheet1").Range("a1:z3000").Value = ""
+
+ddate = Worksheets("Main Page").Range("ah2")
+
+With Worksheets("datatab")
+.AutoFilterMode = False
+.Range("A1:K1").AutoFilter
+.Range("A1:K1").AutoFilter Field:=23, Criteria1:=ddate
+.Range("Table2").Copy Worksheets("Sheet1").[a1]
+
+End With
+
+
+End Sub
+
