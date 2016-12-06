@@ -32,7 +32,7 @@ End If
 If buckettxtb.Value = "" Then
 Cells(emptyrow, 2).Value = ""
 Else
-Cells(emptyrow, 2).Value = buckettxtb.Value
+Cells(emptyrow, 2).Value = bucttxtb.Value
 End If
 
 'minutestxtb
@@ -216,7 +216,7 @@ minutestxtb.Value = ""
 secondstxtb.Value = ""
 
 'empty buckettxtb
-buckettxtb.Value = ""
+bucttxtb.Value = ""
 
 'empty balancetxtb
 balancetxtb.Value = ""
