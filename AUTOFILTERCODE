@@ -1,0 +1,30 @@
+Private Sub CommandButton1_Click()
+
+RabsForm.Show vbModeless
+
+Range("z2").Value = Range("d4").Value
+
+
+End Sub
+
+Private Sub CommandButton2_Click()
+
+
+Worksheets("Sheet1").Range("a1:z3000").Value = ""
+
+ddate = Worksheets("Main Page").Range("ah2")
+
+With Worksheets("datatab")
+.AutoFilterMode = False
+.Range("A1:K1").AutoFilter
+.Range("A1:K1").AutoFilter Field:=23, Criteria1:=ddate
+.Range("Table2").Copy Worksheets("Sheet1").[a1]
+
+
+End With
+End Sub
+
+Private Sub CommandButton3_Click()
+ActiveWorkbook.Close saveChanges:=True
+
+End Sub
